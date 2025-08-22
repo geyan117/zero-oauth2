@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: zero-oauth2-server
+
+  profiles:
+    active: local

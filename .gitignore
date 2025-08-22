@@ -40,3 +40,9 @@ build/
 .idea/
 
 README.md
+HELP.md
+mvnw
+mvnw.cmd
+
+sql/
+
