@@ -1,5 +1,6 @@
 package com.zero.lab.oauth2.common.vo;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.ToString;
 
@@ -15,12 +16,14 @@ public class OAuth2ClientCreateReqVO {
     /**
      * 客户端编号
      */
+    @NotNull
     private String clientId;
 
     /**
      * 客户端秘钥
      */
     @ToString.Exclude
+    @NotNull
     private String secret;
 
     private String logo;
