@@ -26,4 +26,11 @@ public class CommonResult<T> implements Serializable {
         result.setData(data);
         return result;
     }
+
+    public static <T>  CommonResult<T> error(Integer code, String msg) {
+        CommonResult<T> result = new CommonResult<>();
+        result.setCode(code);
+        result.setMsg(msg);
+        return result;
+    }
 }

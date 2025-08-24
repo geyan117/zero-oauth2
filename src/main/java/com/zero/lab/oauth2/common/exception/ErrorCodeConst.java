@@ -11,4 +11,6 @@ public interface ErrorCodeConst {
 
     // === 客户端 100-001-000 ===
     ErrorCode OAUTH2_CLIENT_EXISTS = new ErrorCode(100_001_000, "客户端已经存在");
+
+    ErrorCode OAUTH2_CLIENT_NOT_EXISTS = new ErrorCode(100_001_001, "客户端不存在，需要先创建");
 }

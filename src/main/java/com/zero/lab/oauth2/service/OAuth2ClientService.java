@@ -1,6 +1,6 @@
 package com.zero.lab.oauth2.service;
 
-import com.zero.lab.oauth2.common.vo.OAuth2ClientCreateReqVO;
+import com.zero.lab.oauth2.common.vo.OAuth2ClientReqVO;
 import jakarta.validation.Valid;
 
 /**
@@ -9,5 +9,7 @@ import jakarta.validation.Valid;
  */
 public interface OAuth2ClientService {
 
-    Long createOAuth2Client(@Valid OAuth2ClientCreateReqVO createReqVO);
+    Long createOAuth2Client(@Valid OAuth2ClientReqVO createReqVO);
+
+    Boolean updateOAuth2Client(@Valid OAuth2ClientReqVO updateReqVO);
 }

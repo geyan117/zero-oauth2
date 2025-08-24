@@ -11,7 +11,7 @@ import java.util.List;
  * @date 2025/8/22
  */
 @Data
-public class OAuth2ClientCreateReqVO {
+public class OAuth2ClientReqVO {
 
     /**
      * 客户端编号

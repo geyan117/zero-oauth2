@@ -1,6 +1,5 @@
 package com.zero.lab.oauth2.config;
 
-import com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.zero.lab.oauth2.infra.mybatis.handler.DefaultFieldHandler;
 import org.mybatis.spring.annotation.MapperScan;

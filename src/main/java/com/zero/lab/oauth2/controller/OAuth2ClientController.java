@@ -1,7 +1,7 @@
 package com.zero.lab.oauth2.controller;
 
 import com.zero.lab.oauth2.common.response.CommonResult;
-import com.zero.lab.oauth2.common.vo.OAuth2ClientCreateReqVO;
+import com.zero.lab.oauth2.common.vo.OAuth2ClientReqVO;
 import com.zero.lab.oauth2.service.OAuth2ClientService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -22,13 +22,13 @@ public class OAuth2ClientController {
     private final OAuth2ClientService oAuth2ClientService;
 
     @PostMapping("/create")
-    public CommonResult<Long> createOAuth2Client(@Valid @RequestBody OAuth2ClientCreateReqVO createReqVO) {
+    public CommonResult<Long> createOAuth2Client(@Valid @RequestBody OAuth2ClientReqVO createReqVO) {
         return CommonResult.success(oAuth2ClientService.createOAuth2Client(createReqVO));
     }
 
     @PostMapping("/update")
-    public void updateOAuth2Client() {
-
+    public CommonResult<Boolean> updateOAuth2Client(@Valid @RequestBody OAuth2ClientReqVO updateReqVO) {
+        return CommonResult.success(oAuth2ClientService.updateOAuth2Client(updateReqVO));
     }
 
     @PostMapping("/delete")
