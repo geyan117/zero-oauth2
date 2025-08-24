@@ -39,6 +39,12 @@ public class OAuth2ClientServiceImpl implements OAuth2ClientService {
         return oauth2ClientMapper.updateByClientId(clientDO.getClientId(), clientDO);
     }
 
+    @Override
+    public Boolean deleteOAuth2Client(String clientId) {
+        checkClientNotExist(clientId);
+        return oauth2ClientMapper.deleteByClientId(clientId);
+    }
+
     /**
      * 检查client是否不存在
      *

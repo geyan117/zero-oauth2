@@ -24,4 +24,11 @@ public interface OAuth2ClientMapper extends BaseMapper<OAuth2ClientDO> {
         int affectRow = update(clientDO, updateWrapper);
         return affectRow == 1;
     }
+
+    default boolean deleteByClientId(String clientId) {
+        LambdaUpdateWrapper<OAuth2ClientDO> queryWrapper = new LambdaUpdateWrapper<>();
+        queryWrapper.eq(OAuth2ClientDO::getClientId, clientId);
+        int affectRow = delete(queryWrapper);
+        return affectRow == 1;
+    }
 }

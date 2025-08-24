@@ -4,11 +4,10 @@ import com.zero.lab.oauth2.common.response.CommonResult;
 import com.zero.lab.oauth2.common.vo.OAuth2ClientReqVO;
 import com.zero.lab.oauth2.service.OAuth2ClientService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author geyan
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/zero/oauth2-client")
 @RequiredArgsConstructor
+@Validated
 public class OAuth2ClientController {
 
     private final OAuth2ClientService oAuth2ClientService;
@@ -26,13 +26,13 @@ public class OAuth2ClientController {
         return CommonResult.success(oAuth2ClientService.createOAuth2Client(createReqVO));
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public CommonResult<Boolean> updateOAuth2Client(@Valid @RequestBody OAuth2ClientReqVO updateReqVO) {
         return CommonResult.success(oAuth2ClientService.updateOAuth2Client(updateReqVO));
     }
 
-    @PostMapping("/delete")
-    public void deleteOAuth2Client() {
-
+    @DeleteMapping("/delete")
+    public CommonResult<Boolean> deleteOAuth2Client(@NotEmpty @RequestParam String clientId) {
+        return CommonResult.success(oAuth2ClientService.deleteOAuth2Client(clientId));
     }
 }

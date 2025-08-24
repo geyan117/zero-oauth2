@@ -12,4 +12,6 @@ public interface OAuth2ClientService {
     Long createOAuth2Client(@Valid OAuth2ClientReqVO createReqVO);
 
     Boolean updateOAuth2Client(@Valid OAuth2ClientReqVO updateReqVO);
+
+    Boolean deleteOAuth2Client(String clientId);
 }
