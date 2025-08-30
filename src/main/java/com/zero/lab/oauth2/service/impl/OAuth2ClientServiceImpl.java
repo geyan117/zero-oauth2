@@ -1,5 +1,6 @@
 package com.zero.lab.oauth2.service.impl;
 
+import com.zero.lab.oauth2.common.constant.RedisKeyConstants;
 import com.zero.lab.oauth2.common.exception.ErrorCodeConst;
 import com.zero.lab.oauth2.common.exception.OAuth2Exception;
 import com.zero.lab.oauth2.common.utils.ZeroBeanUtil;
@@ -10,6 +11,7 @@ import com.zero.lab.oauth2.service.OAuth2ClientService;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -43,6 +45,13 @@ public class OAuth2ClientServiceImpl implements OAuth2ClientService {
     public Boolean deleteOAuth2Client(String clientId) {
         checkClientNotExist(clientId);
         return oauth2ClientMapper.deleteByClientId(clientId);
+    }
+
+    // TODO@geyan 需要配置 Spring Cache
+    @Override
+//    @Cacheable(cacheNames = RedisKeyConstants.OAUTH_CLIENT, key = "#clientId", unless = "#result == null")
+    public OAuth2ClientDO validateOAuth2ClientFromCache(String clientId) {
+        return oauth2ClientMapper.selectByClientId(clientId);
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.zero.lab.oauth2.service;
 
 import com.zero.lab.oauth2.common.vo.OAuth2ClientReqVO;
+import com.zero.lab.oauth2.mysql.dataobject.OAuth2ClientDO;
 import jakarta.validation.Valid;
 
 /**
@@ -14,4 +15,6 @@ public interface OAuth2ClientService {
     Boolean updateOAuth2Client(@Valid OAuth2ClientReqVO updateReqVO);
 
     Boolean deleteOAuth2Client(String clientId);
+
+    OAuth2ClientDO validateOAuth2ClientFromCache(String clientId);
 }
